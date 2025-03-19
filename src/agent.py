@@ -4,28 +4,15 @@ from langchain.agents import initialize_agent, AgentType
 from langchain.tools import Tool
 import os
 from src.config import GEMINI_API_KEY
+from src.tools import summarize_text, analyze_sentiment, extract_entities, generate_code, translate_text
 
 # Initialize LLM (Google Gemini API via LangChain)
 llm = ChatOpenAI(openai_api_key=GEMINI_API_KEY)
 
+# Define memory
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
 # Define tools (Advanced tasks)
-def summarize_text(text):
-    return "[Summarized] " + text[:50]  # Mock summarization
-
-def analyze_sentiment(text):
-    return "Positive" if "good" in text.lower() else "Negative"
-
-def extract_entities(text):
-    return {"Entities": ["AI", "Machine Learning"]}  # Mock entity extraction
-
-def generate_code(prompt):
-    return "print('Hello World')" if "Python" in prompt else "Code generation not supported."
-
-def translate_text(text, target_language="fr"):
-    return f"Translated ({target_language}): {text}"  # Mock translation
-
 tools = [
     Tool(name="Summarization", func=summarize_text, description="Summarize input text."),
     Tool(name="Sentiment Analysis", func=analyze_sentiment, description="Analyze sentiment of text."),
