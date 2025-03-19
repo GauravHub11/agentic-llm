@@ -1,13 +1,16 @@
 from langchain.chat_models import ChatOpenAI
+from langchain_deepseek import ChatDeepSeek
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.memory import ConversationBufferMemory
 from langchain.agents import initialize_agent, AgentType
 from langchain.tools import Tool
 import os
-from src.config import GEMINI_API_KEY
+from src.config import API_KEY
 from src.tools import summarize_text, analyze_sentiment, extract_entities, generate_code, translate_text
 
-# Initialize LLM (Google Gemini API via LangChain)
-llm = ChatOpenAI(openai_api_key=GEMINI_API_KEY)
+# Initialize LLM
+llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash-lite", google_api_key=API_KEY)
+
 
 # Define memory
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
