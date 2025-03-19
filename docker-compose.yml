@@ -11,4 +11,4 @@ services:
     volumes:
       - .:/app
     environment:
-      GOOGLE_API_KEY: ${GOOGLE_API_KEY} #Pass the API key as environment variable
+      API_KEY: ${API_KEY} #Pass the API key as environment variable
