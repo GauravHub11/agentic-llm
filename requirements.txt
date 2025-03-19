@@ -3,3 +3,6 @@ langchain
 python-dotenv
 openai
 pytest
+langchain_community
+langchain-deepseek
+langchain_google_genai
